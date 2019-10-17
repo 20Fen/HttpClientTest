@@ -7,6 +7,7 @@ import com.example.demo.util.HttpClientUtil;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -19,7 +20,9 @@ public class AuthServiceUser {
 //    get无参数
     public List<TestPo>  getTestPoList() {
         List<TestPo> testPoList = null;
+        log.info("开始调用服务" + LocalDateTime.now().toString());
         String getResult = HttpClientUtil.doGet("http://localhost:9998/findAll?page=1&pageSize=12");
+        log.info("调用服务结束" + LocalDateTime.now().toString());
         if (getResult != null && !"".equals(getResult)) {
             if (JSON.parseObject(getResult).getString("list") != null) {
                 testPoList = JSON.parseArray(JSON.parseObject(getResult).getString("list"), TestPo.class);
@@ -35,7 +38,9 @@ public class AuthServiceUser {
     //    get有参数
     public TestPo getTestPo(String planNo) {
         TestPo testPo = null;
+        log.info("开始调用服务" + LocalDateTime.now().toString());
         String getResult = HttpClientUtil.doGet("http://localhost:9998/byId"+"/"+ planNo);
+        log.info("调用服务结束" + LocalDateTime.now().toString());
         if (getResult != null && !"".equals(getResult)) {
             if (JSON.parseObject(getResult).getString("results") != null) {
                 JSONObject resultJson = JSONObject.parseObject(getResult);
