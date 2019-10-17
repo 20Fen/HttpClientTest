@@ -57,7 +57,9 @@ public class AuthServiceUser {
 
     //    post有参数
     public String addTestPo(TestPo testPo) {
+        log.info("开始调用服务" + LocalDateTime.now().toString());
         String getResult = HttpClientUtil.doPost("http://localhost:9998/test",testPo);
+        log.info("调用服务结束" + LocalDateTime.now().toString());
         if (getResult != null && !"".equals(getResult)) {
         } else {
             log.error("获取数据失败");
