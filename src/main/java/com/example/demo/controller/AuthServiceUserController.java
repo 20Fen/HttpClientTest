@@ -58,25 +58,5 @@ public class AuthServiceUserController {
         return addTestPo;
     }
 
-    public static void main(String[] args) {
 
-        String url= "www.baidu.com";
-        Map<String,String> map=new HashMap<>();
-        map.put("123","123");
-        map.put("234","23");
-        map.put("345","3");
-
-        try {
-            URIBuilder builder1 = new URIBuilder(url);
-
-            for (String o : map.keySet()) {
-                builder1.setParameter(o, map.get(o));
-            }
-            URI build = builder1.build();
-            System.out.println(build);
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-
-    }
 }
